@@ -18,22 +18,22 @@ class StudentDashboardPage extends StatefulWidget {
 class _StudentDashboardPageState extends State<StudentDashboardPage> {
 
   final List<String> sessions = [
-    'Session 2020-2024',
-    'Session 2019-2023',
-    'Session 2018-2022',
-    'Session 2017-2021',
-    'Session 2016-2020',
-    'Session 2015-2019',
-    'Session 2014-2018',
+    '2024-2028',
+    '2023-2027',
+    '2022-2026',
+    '2021-2025',
+    '2020-2024',
+    '2019-2023',
+    '2018-2022',
+    '2017-2021',
+    '2016-2020',
+    '2015-2019',
+    '2014-2018',
+    '2013-2017',
+    '2012-2016',
+    '2011-2015',
+    '2010-2014',
   ];
-
-  int _selectedIndex = 1; // Default to Dashboard tab
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,6 +165,7 @@ class _StudentDashboardPageState extends State<StudentDashboardPage> {
                           ),
                           onTap: () {
                             Get.to(() => PastProjectListScreen(session: sessions[index]));
+                            print(sessions[index]);
                           },
 
                         ),

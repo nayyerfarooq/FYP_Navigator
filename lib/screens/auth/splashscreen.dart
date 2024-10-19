@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:fyp_navigator/Controllers/BottomBarController.dart';
+import 'package:fyp_navigator/Portals/AdminPortal/AdminMainScreen.dart';
 import 'package:fyp_navigator/Portals/studentportal/Dashboard/student_dashboard.dart';
 import 'package:get/get.dart';
 import 'package:fyp_navigator/screens/auth/login.dart';
@@ -30,8 +32,12 @@ class _SplashScreenState extends State<SplashScreen> {
         // Redirect based on login status (use appropriate dashboard)
        // Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
         Get.off(() => StudentBottomBarPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+       //Get.off(() => AdminBottomBarController(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
       } else {
-        Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+        //Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+        //Get.off(() => AdminDashboardPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+        Get.off(() => StudentBottomBarPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+
       }
     });
   }

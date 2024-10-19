@@ -39,6 +39,7 @@ class LoginController extends GetxController {
           } else {
             isLoading.value = false;
             showErrorSnackbar(userModel!.role.toString());
+            print(userModel!.role.toString());
           }
         } else {
           isLoading.value = false;

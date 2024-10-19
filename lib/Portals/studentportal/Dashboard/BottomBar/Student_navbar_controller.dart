@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_navigator/Portals/AdminPortal/adminProfile.dart';
 import 'package:fyp_navigator/Portals/AdminPortal/admin_dashboard.dart';
 import 'package:fyp_navigator/Portals/studentportal/Dashboard/student_dashboard.dart';
 import 'package:fyp_navigator/Portals/studentportal/Notifications/student_notification.dart';
@@ -17,6 +18,6 @@ class StudentBottomBarController extends GetxController {
     StudentDashboardPage(),
     ProjectRequest(),
     NotificationScreen(),
-    StudentProfile(),
+    AdminProfilePage(),
   ];
 }

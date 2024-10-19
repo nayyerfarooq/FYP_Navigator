@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'ManageSupervioser/ManageSupervisorsPage.dart';
 import 'ManageUser/ManageUserPage.dart';
+import 'admin_add_projects.dart';
 
 class AdminHomePage extends StatefulWidget {
   @override
@@ -21,12 +23,20 @@ class _AdminHomePageState extends State<AdminHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Overview',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
               SizedBox(height: 20),
               _buildKeyMetrics(isSmallScreen),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => AddProjects());
+                  },
+                  child: Text('Add Project'))
             ],
           ),
         ),
@@ -41,14 +51,16 @@ class _AdminHomePageState extends State<AdminHomePage> {
       alignment: WrapAlignment.spaceEvenly,
       children: [
         _buildMetricCard('Manage', "Users", Icons.people, Colors.blue),
-        _buildMetricCard('Manage', "Supervioser", Icons.supervised_user_circle, Colors.blue),
+        _buildMetricCard(
+            'Manage', "Supervioser", Icons.supervised_user_circle, Colors.blue),
         _buildMetricCard('Manage', 'Projects', Icons.work, Colors.orange),
         _buildMetricCard('Manage', 'Feedback', Icons.feedback, Colors.green),
       ],
     );
   }
 
-  Widget _buildMetricCard(String title, String count, IconData icon, Color color) {
+  Widget _buildMetricCard(
+      String title, String count, IconData icon, Color color) {
     return ConstrainedBox(
       constraints: BoxConstraints(minWidth: 150, maxWidth: 200),
       child: GestureDetector(

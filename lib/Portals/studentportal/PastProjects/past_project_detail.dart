@@ -13,12 +13,14 @@ class ProjectDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        foregroundColor: Colors.white,
         title: const Text('Project Details'),
         backgroundColor: Colors.teal,
       ),
       body: FutureBuilder<DocumentSnapshot>(
         future: FirebaseFirestore.instance
-            .collection('projects')
+            .collection('PastProjects')
             .doc(projectId)
             .get(),
         builder: (context, snapshot) {
@@ -47,15 +49,15 @@ class ProjectDetailsScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text('Supervisor: ${projectData['supervisor']}'),
                 const SizedBox(height: 10),
-                Text('Partner: ${projectData['partner'] ?? 'None'}'),
+                Text('Student1: ${projectData['Student1'] ?? 'None'}'),
                 const SizedBox(height: 10),
-                Text('Status: ${projectData['status']}'),
+                Text('Student2: ${projectData['Student2'] ?? 'None'}'),
                 const SizedBox(height: 20),
                 // Display download button if SRS document URL is available
-                projectData.containsKey('srsFileUrl') && projectData['srsFileUrl'] != null
+                projectData.containsKey('fileUrl') && projectData['fileUrl'] != null
                     ? ElevatedButton.icon(
                   onPressed: () async {
-                    String srsFileUrl = projectData['srsFileUrl'];
+                    String srsFileUrl = projectData['fileUrl'];
                     if (await canLaunchUrl(Uri.parse(srsFileUrl))) {
                       await launchUrl(Uri.parse(srsFileUrl), mode: LaunchMode.externalApplication);
                     } else {

@@ -19,7 +19,7 @@ class PastProjectListScreen extends StatelessWidget {
       ),
       body: FutureBuilder<QuerySnapshot>(
         future: FirebaseFirestore.instance
-            .collection('projects')
+            .collection('PastProjects')
             .where('session', isEqualTo: session) // Query by session
             .get(),
         builder: (context, snapshot) {
