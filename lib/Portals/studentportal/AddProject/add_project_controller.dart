@@ -19,7 +19,7 @@ class AddProjectController extends GetxController {
   final CollectionReference usersRef = FirebaseFirestore.instance.collection('Users');
 
   // Domains list (can be modified)
-  final List<String> domains = ['Machine Learning', 'Mobile Development', 'Web Development', 'Data Science'];
+  final List<String> domains = ['Machine Learning', 'Mobile Development', 'Web Development', 'Data Science','Other'];
 
   // Supervisors list
   var supervisors = <String>[].obs;

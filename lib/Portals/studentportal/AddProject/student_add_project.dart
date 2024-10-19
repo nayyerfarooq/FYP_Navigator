@@ -2,8 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'add_project_controller.dart';
 
-class AddProject extends StatelessWidget {
+class StudentRequestProject extends StatelessWidget {
   final AddProjectController controller = Get.put(AddProjectController());
+
+  final List<String> sessions = [
+    '2030-2034',
+    '2029-2033',
+    '2028-2032',
+    '2027-2031',
+    '2026-2030',
+    '2025-2029',
+    '2024-2028',
+    '2023-2027',
+    '2022-2026',
+    '2021-2025',
+    '2020-2024',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +58,10 @@ class AddProject extends StatelessWidget {
               ),
               SizedBox(height: 16),
 
-              // Session
-              TextFormField(
-                controller: controller.sessionController,
+              // Session (Dropdown)
+              DropdownButtonFormField<String>(
                 decoration: InputDecoration(
-                  labelText: 'Session (e.g. 2020-2024)',
+                  labelText: 'Session',
                   labelStyle: TextStyle(color: Colors.tealAccent[700]),
                   filled: true,
                   fillColor: Colors.white,
@@ -56,6 +69,18 @@ class AddProject extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
+                value: controller.sessionController.text.isEmpty
+                    ? null
+                    : controller.sessionController.text,
+                items: sessions
+                    .map((session) => DropdownMenuItem(
+                  value: session,
+                  child: Text(session),
+                ))
+                    .toList(),
+                onChanged: (value) {
+                  controller.sessionController.text = value!;
+                },
               ),
               SizedBox(height: 16),
 
@@ -89,7 +114,9 @@ class AddProject extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  value: controller.selectedSupervisor.value.isEmpty ? null : controller.selectedSupervisor.value,
+                  value: controller.selectedSupervisor.value.isEmpty
+                      ? null
+                      : controller.selectedSupervisor.value,
                   items: controller.supervisors
                       .map((supervisor) => DropdownMenuItem(
                     value: supervisor,
@@ -115,7 +142,9 @@ class AddProject extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  value: controller.selectedDomain.value.isEmpty ? null : controller.selectedDomain.value,
+                  value: controller.selectedDomain.value.isEmpty
+                      ? null
+                      : controller.selectedDomain.value,
                   items: controller.domains
                       .map((domain) => DropdownMenuItem(
                     value: domain,
@@ -158,7 +187,10 @@ class AddProject extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                child: Text('Submit Project',style: TextStyle(color: Colors.white),),
+                child: Text(
+                  'Submit Project',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

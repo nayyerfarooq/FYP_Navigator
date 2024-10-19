@@ -180,7 +180,7 @@ class _StudentDashboardPageState extends State<StudentDashboardPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(()=>AddProject()
+          Get.to(()=>StudentRequestProject()
           );
         },
         backgroundColor: Colors.teal,
