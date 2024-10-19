@@ -6,7 +6,7 @@ import 'package:fyp_navigator/CustomWidgets/Snakbar.dart';
 import '../Models/AuthenticationModel.dart';
 import '../Models/LoginSharedPreferences.dart';
 import '../Portals/SupervioserPortal/supervisor_dashboard.dart';
-import '../Portals/studentportal/student_dashboard.dart';
+import '../Portals/studentportal/Dashboard/student_dashboard.dart';
 class LoginController extends GetxController {
   var isLoading = false.obs;
   final emailController = TextEditingController();

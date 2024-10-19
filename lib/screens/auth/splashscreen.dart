@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:fyp_navigator/Portals/studentportal/Dashboard/student_dashboard.dart';
 import 'package:get/get.dart';
 import 'package:fyp_navigator/screens/auth/login.dart';
 import 'package:fyp_navigator/Models/AuthenticationModel.dart';
 import 'package:fyp_navigator/Models/LoginSharedPreferences.dart';
 
+import '../../Portals/studentportal/Dashboard/BottomBar/bottom_nav_bar.dart';
 import 'login.dart'; // Replace with actual login shared preferences
 
 class SplashScreen extends StatefulWidget {
@@ -26,7 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () {
       if (uid != null) {
         // Redirect based on login status (use appropriate dashboard)
-        Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+       // Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+        Get.off(() => StudentBottomBarPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
       } else {
         Get.off(() => LoginPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
       }
