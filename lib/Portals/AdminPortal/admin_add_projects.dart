@@ -33,7 +33,6 @@ class _AddProjectsState extends State<AddProjects> {
   final TextEditingController _projectTitleController = TextEditingController();
   final TextEditingController _supervisorController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController _sessionController = TextEditingController();
   final TextEditingController _student1Controller = TextEditingController();
   final TextEditingController _student2Controller = TextEditingController();
   String? _uploadedFileUrl;
@@ -112,7 +111,7 @@ class _AddProjectsState extends State<AddProjects> {
         'Student2': _student2Controller.text,
         'supervisor': _supervisorController.text,
         'description': _descriptionController.text,
-        'session': _sessionController.text,
+        'session': _selectedSession,
         'fileUrl': _uploadedFileUrl,
         'timestamp': FieldValue.serverTimestamp(),
       });
