@@ -13,7 +13,7 @@ class ManageSupervisorsPage extends StatefulWidget {
 class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
    User? user =FirebaseAuth.instance.currentUser;
   void _showAddEditSupervisorDialog(
-      {String? name, String? email, String? password, String? department, int? index}) {
+      {String? name, String? email, String? password, String? department, int? index,String? uid}) {
     TextEditingController supervisorNameController = TextEditingController(text: name ?? '');
     TextEditingController supervisorEmailController = TextEditingController(text: email ?? '');
     TextEditingController supervisorPasswordController = TextEditingController(text: password ?? '');
@@ -31,7 +31,8 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
             style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
           ),
           content: SingleChildScrollView(
-            child: Column(
+            child: index == null?
+            Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildTextField('Supervisor Name', supervisorNameController),
@@ -39,6 +40,13 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
                 _buildTextField('Supervisor Email', supervisorEmailController),
                 SizedBox(height: 10),
                 _buildTextField('Supervisor Password', supervisorPasswordController),
+                SizedBox(height: 10),
+                _buildTextField('Supervisor Department', supervisorDepartmentController),
+              ],
+            ): Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildTextField('Supervisor Name', supervisorNameController),
                 SizedBox(height: 10),
                 _buildTextField('Supervisor Department', supervisorDepartmentController),
               ],
@@ -53,19 +61,32 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                    try{
-                      createSuperVisorAndAddData(
-                        supervisorNameController.text,
-                        supervisorEmailController.text,
-                        supervisorPasswordController.text,
-                        supervisorDepartmentController.text,
-                      );
-                      showSuccessSnackbar('Data Added sUCESSFULLY');
-                    } catch (e){
+                   if(index == null){
+                     try{
+                       createSuperVisorAndAddData(
+                           supervisorNameController.text,
+                           supervisorEmailController.text,
+                           supervisorPasswordController.text,
+                           supervisorDepartmentController.text
+                       );
+                     }catch (e){
                        showErrorSnackbar(e.toString());
-                    }finally{
-                      Get.back();
-                    }
+                     }
+                   }else
+                     {
+                       try{
+                         updateSupervisor(
+                           uid ?? '',
+                           supervisorNameController.text,
+                           supervisorDepartmentController.text,
+                         );
+                         showSuccessSnackbar('Data Added sUCESSFULLY');
+                       } catch (e){
+                         showErrorSnackbar(e.toString());
+                       }finally{
+                         Get.back();
+                       }
+                     }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.teal,
@@ -179,6 +200,8 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
                                             email: supervisor['email'],
                                             password: supervisor['password'],
                                             department: supervisor['department'],
+                                            index: index,
+                                            uid: supervisor['uid'],
                                           );
                                         },
                                         icon: Icon(Icons.edit, size: 16, color: Colors.white),
@@ -194,7 +217,8 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
                                       // Delete Button
                                       ElevatedButton.icon(
                                         onPressed: () {
-                                            deleteSupervisor(user!.uid);
+                                          // Passing the UID, email, and password to deleteSupervisor
+                                          deleteSupervisor(supervisor['uid'], supervisor['email'], supervisor['password']);
                                         },
                                         icon: Icon(Icons.delete, size: 16, color: Colors.white),
                                         label: Text('Delete', style: TextStyle(fontSize: 16, color: Colors.white)),
@@ -205,6 +229,7 @@ class _ManageSupervisorsPageState extends State<ManageSupervisorsPage> {
                                           ),
                                         ),
                                       ),
+
                                     ],
                                   ),
                                 ],

@@ -36,7 +36,7 @@ class _StudentSignUpPageState extends State<StudentSignUpPage> {
 
   final List<String> _semesters = ['Semester 1', 'Semester 2', 'Semester 3', 'Semester 4', 'Semester 5', 'Semester 6', 'Semester 7', 'Semester 8'];
 
-  final List<String> _departments = ['Computer Science', 'Electrical Engineering', 'Mechanical Engineering', 'Civil Engineering', 'Chemical Engineering'];
+  final List<String> _departments = ['Computer Science', 'Software Engineering', 'Data Science', 'Electrical Engineering'];
 
   Future<void> _signUp() async {
     if (_formKey.currentState!.validate()) {

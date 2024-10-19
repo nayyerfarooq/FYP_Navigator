@@ -32,7 +32,7 @@ class LoginController extends GetxController {
             } else if (userModel.role == 'Student') {
               Get.offAll(() => StudentDashboardPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
               showSuccessSnackbar('Login Successfully');
-            } else if (userModel.role == 'supervioser') {
+            } else if (userModel.role == 'supervisor') {
               Get.offAll(() => SupervisorDashboardPage(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
               showSuccessSnackbar('Login Successfully');
             }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fyp_navigator/screens/auth/splashscreen.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart'; // Ensure this file is generated via Firebase CLI for platform-specific options
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
