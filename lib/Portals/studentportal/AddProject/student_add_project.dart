@@ -4,7 +4,6 @@ import 'add_project_controller.dart';
 
 class StudentRequestProject extends StatelessWidget {
   final AddProjectController controller = Get.put(AddProjectController());
-
   final List<String> sessions = [
     '2030-2034',
     '2029-2033',
