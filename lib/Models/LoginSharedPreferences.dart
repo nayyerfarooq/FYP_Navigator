@@ -51,7 +51,7 @@ class AuthService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('uid');
     await prefs.remove('userName');
-    Get.offAll(SplashScreen()); // Use Get.offAll instead of Get.off
+    Get.offAll(SplashScreen());
   }
 
   Future<void> saveSuperVisorName(String? SuperVisorName) async {

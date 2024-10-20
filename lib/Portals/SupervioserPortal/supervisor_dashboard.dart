@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fyp_navigator/CustomWidgets/TextWidget.dart';
 import 'package:fyp_navigator/Models/LoginSharedPreferences.dart';
 import 'package:get/get.dart';
@@ -24,7 +23,6 @@ class SupervisorDashboardPage extends StatelessWidget {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

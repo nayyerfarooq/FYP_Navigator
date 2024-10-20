@@ -7,9 +7,7 @@ import 'package:get/get.dart';
 import 'package:fyp_navigator/screens/auth/login.dart';
 import 'package:fyp_navigator/Models/AuthenticationModel.dart';
 import 'package:fyp_navigator/Models/LoginSharedPreferences.dart';
-
 import '../../Portals/studentportal/Dashboard/BottomBar/bottom_nav_bar.dart';
-import 'login.dart'; // Replace with actual login shared preferences
 
 class SplashScreen extends StatefulWidget {
   @override
